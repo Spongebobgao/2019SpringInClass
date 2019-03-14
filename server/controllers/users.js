@@ -6,12 +6,13 @@ app.get("/", (req, res) => {
     user.getAll ((err, data) => {
       if (err) throw err;
       res.send(data);//action
-  });
+  })});
   app.get("/:id", (req, res) => {
     user.get (req.params.id, (err, data) => {
       if (err) throw err;
       res.send(data);//action
-  });  
+  })
+});  
 app.post("/", (req, res) => {
     console.log(req.body);
     user.add(req.body, (err, data) => {
@@ -20,8 +21,5 @@ app.post("/", (req, res) => {
     })
 
 });
-//"/"the root of the controller
-});
-
+  
 module.exports = app;
-//module.exports=return

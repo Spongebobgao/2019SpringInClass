@@ -9,5 +9,8 @@ const conn = mysql.createPool({
     connectionLimit: 10
     //insecureAuth: true
 })
-
+conn.query("SELECT * FROM 2019spring_persons", (err, data) => {
+    if (err) throw err
+    else console.log(data)
+});
 module.exports = conn;

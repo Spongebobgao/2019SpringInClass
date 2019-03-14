@@ -2,8 +2,8 @@ const conn = require('./mysql_connection');//require is part of the common js
 
 const model = {
     getAll(cb){//cb is a function from controller
-        conn.query("SELECT * FROM 2019Spring_Persons", (err, data) => {
-            cb (err, data[0])
+        conn.query("SELECT * FROM 2019spring_persons", (err, data) => {
+            cb (err, data)
         });
     },
     get(id,cb) {
