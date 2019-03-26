@@ -1,5 +1,6 @@
 const mysql = require('mysql');
               require('dotenv').load();
+const util = require('util')
 
 const conn = mysql.createPool({
     host: process.env.MYSQL_HOST,
@@ -9,8 +10,5 @@ const conn = mysql.createPool({
     connectionLimit: 10
     //insecureAuth: true
 })
-conn.query("SELECT * FROM 2019spring_persons", (err, data) => {
-    if (err) throw err
-    else console.log(data)
-});
+conn.query = util.promisify(conn.query)
 module.exports = conn;

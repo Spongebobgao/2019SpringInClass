@@ -15,18 +15,27 @@
         <router-link class="nav-link" to="/About">Link</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link disabled" to="/MyFriends">Myfriends</router-link>
+        <router-link class="nav-link" to="/MyFriends">Myfriends</router-link>
       </li>
     </ul>
+
+      <form class="form-inline mt-2 mt-md-0" v-if="!user">
+                <a href="#" class="nav-link" @click.prevent="login">Login</a>
+                <a href="#" class="nav-link">Sign Up</a>
+            </form>
+            <span class="navbar-text" v-if="user">Welcome {{user.name}}</span>
   </div>
-    <form class="form-inline mt-2 mt-md-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
 </nav>
 </template>
 <script>
   export default {
-  name: 'Nav'
+    data: () => ({
+      user: null
+    }),
+    methods: {
+      login() {
+        this.user = { name: "Me"};
+      }
+    }
 }
 </script>
