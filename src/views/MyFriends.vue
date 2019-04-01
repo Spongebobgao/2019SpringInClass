@@ -1,20 +1,25 @@
 <template>
 
 <div>
-  <h1> My Friends Page</h1>
+  <h1 v-if="Globals.user">{{ Globals.user.name }} Friends Page</h1>
   <ul>
-    <li>My Friend 1</li>
-    <li>My Friend 2</li>
-    <li>My Friend 3</li>
-    <li>My Friend 4</li>
-    <li>My Friend 5</li>
+    <li v-for="friends in friends" :key="friends.id">{{ friends.FirstName}} {{ friends.LastName}}</li>
   </ul>
 </div>
   </template>
 
 <script>
+import { Globals } from '@/models/api'
+import { GetFriends } from "../models/users.js"
+
+GetFriends()
 export default {
-  name: 'MyFriends'
+  data: () => ({
+    Globals: Globals,
+    friends: []
+  }),
+  async mounted() {
+    this.friends = await GetFriends()
+  }
 }
 </script>
-  
