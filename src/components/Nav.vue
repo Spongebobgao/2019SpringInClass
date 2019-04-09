@@ -23,7 +23,7 @@
                 <a href="#" class="nav-link" @click.prevent="login">Login</a>
                 <a href="#" class="nav-link">Sign Up</a>
             </form>
-            <span class="navbar-text" v-if="Globals.user">Welcome {{Globles.user.name}}</span>
+            <span class="navbar-text" v-if="Globals.user">Welcome {{Globles.user.FirstName}}</span>
   </div>
 </nav>
 </template>

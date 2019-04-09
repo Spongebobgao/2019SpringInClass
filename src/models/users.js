@@ -9,6 +9,10 @@ export async function GetFriends() {
 export const GetFriends2 = () => api("users")// this one does the same thing as the above one
 
 export async function Register(data) {
-    const x = await api("users",data)
+    const x = await api("users", data)
     return x
+}
+export async function Login(data){
+    const x = await api("users/login", data)
+    return x;
 }

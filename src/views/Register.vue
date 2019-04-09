@@ -18,7 +18,7 @@
     </div>
     <div class="card-body">
       <h4 class="card-title">Register</h4>
-      <p class="card-text">
+      <div class="card-text">
           <form @submit.prevent="submit">
               <div class="form-group">
                 <label for="FirstName">FirstName</label>
@@ -47,19 +47,39 @@
           </div>
         </div>
     </div>
+    <div class="col-lg-6">
+      <div class="card border-success" v-if="newUser">
+        <div class="card-body">
+          <h4 class="card-title">Congrats! You're registered!</h4>
+          <p class="card-text">{{newUser.FirstName}} {{ newUser.FirstName}}</p>
+        </div>
+      </div>
+  </div>
   </div>
 </template>
 
 <script>
+import toastr from 'toastr';
+import 'toastr/build/toastr.css'
 import { Register } from '@/models/users'
+import { Globals } from "@/models/api";
 export default {
     data: () => ({
-        data: { }
+        data: { },
+        newUser: null
     }),
     methods: {
-        submit() {
-            Register(this.data)
+      async submit() {
+        var m = null
+        try {
+          m = await Register(this.data);
+          this.newUser = m;
+          toatr.success("You've reigitered successfully!")
+        } catch {
+          Globals.errors.push(m);
+          toastr.error(error.msg)
         }
+      }
     }
 }
 </script>

@@ -15,10 +15,11 @@ app.get("/:id", (req, res, next) => {
 });
 app.post("/", (req, res, next) => {
     user.add(req.body)
-    .then(x=>  res.send(x) )
+    .then(x=> res.send(x) )
     .catch(next)
 });
 app.post("/login", (req, res, next) => {
+    //console.log({req.body})
     user.login(req.body.email, req.body.password)
     .then(x=>  res.send(x) )
     .catch(next)
